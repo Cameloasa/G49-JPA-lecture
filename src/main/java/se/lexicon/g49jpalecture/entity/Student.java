@@ -29,6 +29,10 @@ public class Student {
     @Column(nullable = false ,  unique = true)
     @Setter private String email;
 
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    @Setter private Address address;
+
     @Column
     private boolean status;
 
@@ -44,4 +48,31 @@ public class Student {
     }
 
 
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+
+
+    @Entity
+    public static class Address {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+
+        @Column
+        private String street;
+
+        @Column
+        private String city;
+
+        @Column
+        private String zipCode;
+
+        public Address(String street, String city, String zipCode) {
+            this.street = street;
+            this.city = city;
+            this.zipCode = zipCode;
+        }
+    }
 }
