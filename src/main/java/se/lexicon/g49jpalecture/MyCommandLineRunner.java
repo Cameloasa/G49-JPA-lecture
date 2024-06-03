@@ -3,6 +3,7 @@ package se.lexicon.g49jpalecture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import se.lexicon.g49jpalecture.entity.Address;
 import se.lexicon.g49jpalecture.entity.Student;
 import se.lexicon.g49jpalecture.repository.StudentRepository;
 
@@ -14,7 +15,9 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        studentRepository.save(new Student("john","doe","john@gmail.com"));
+
+        Address address = new Address("TestStreet","TestCity","12345");
+        studentRepository.save(new Student("John","Doe","john@gmail.com",address));
 
     }
 

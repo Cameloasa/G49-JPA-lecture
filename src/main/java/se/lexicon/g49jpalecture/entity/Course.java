@@ -25,7 +25,7 @@ public class Course {
     @Column(nullable = false , length = 100)
     private String courseName;
 
-    @OneToMany(mappedBy = "Course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private Set<Student> students = new HashSet<>();
 
     @ManyToMany
@@ -39,7 +39,7 @@ public class Course {
     //Constructor
     public Course(String courseName) {
         this.courseName = courseName;
-        instructors = new HashSet<>();
+
     }
 
 
