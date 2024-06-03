@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.web.server.MimeMappings;
 
 @Getter
 @Setter
@@ -17,6 +18,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     private Long id;
 
     @Column(nullable = false)
@@ -27,6 +29,10 @@ public class Address {
 
     @Column(nullable = false, length = 6)
     private String zipCode;
+
+
+    @OneToOne(mappedBy = "address")
+    private Student student;
 
     public Address(String street, String city, String zipCode) {
         this.street = street;
